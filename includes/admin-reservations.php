@@ -189,3 +189,12 @@ function createit_nvo_reservations_page() {
     </div>
     <?php
 }
+
+add_action('admin_enqueue_scripts', function() {
+    wp_enqueue_script('reservation-timer-js', CREATEIT_NVO_PLUGIN_URL . 'assets/js/reservation-timer.js', [], null, true);
+    wp_localize_script('reservation-timer-js', 'reservationTimer', [
+        'timerDuration' => 600, // 10 minutes
+        'expiryMessage' => __('Sesija beigusies. Jūsu rezervācija ir anulēta. Lūdzu, veiciet atkārtotu rezervāciju.', 'createit')
+    ]);
+});
+
