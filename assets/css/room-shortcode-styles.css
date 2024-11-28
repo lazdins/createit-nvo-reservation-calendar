@@ -1,1 +1,159 @@
+/* Font-face declarations for Bw Mitga fonts */
+@font-face {
+    font-family: 'Bw Mitga';
+    src: url('https://apkaimes.lv/wp-content/themes/apkaimes/css/fonts/BwMitga-Bold.woff2') format('woff2'),
+         url('https://apkaimes.lv/wp-content/themes/apkaimes/css/fonts/BwMitga-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Bw Mitga';
+    src: url('https://apkaimes.lv/wp-content/themes/apkaimes/css/fonts/BwMitga-Regular.woff2') format('woff2'),
+         url('https://apkaimes.lv/wp-content/themes/apkaimes/css/fonts/BwMitga-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Styles */
+body {
+    font-family: 'Bw Mitga', 'Gilroy', sans-serif;
+}
+
+.nvo-rooms-wrap {
+    max-width: 1211px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.nvo-rooms-wrap h1 {
+    font-size: 32px;
+    color: #231f20;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Filter Section */
+.nvo-rooms-filters {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.nvo-rooms-filters > div {
+    flex: 0 0 auto;
+}
+
+.nvo-rooms-filters label {
+    font-size: 14px;
+    color: #666666;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.nvo-rooms-filters select,
+.nvo-rooms-filters input {
+    font-family: 'Bw Mitga', 'Gilroy', sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    color: #333333;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 10px;
+}
+
+.nvo-rooms-filters button {
+    font-family: 'Bw Mitga', 'Gilroy', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #231f20;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    height: 42px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.nvo-rooms-filters button:hover {
+    background-color: #3fcab1;
+}
+
+/* Room List Section */
+.nvo-rooms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.nvo-room {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nvo-room:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nvo-room img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.nvo-room img.fallback {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+.nvo-room-title h3 {
+    font-size: 22px;
+    color: #231f20;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.nvo-room a.button {
+    display: inline-block;
+    font-family: 'Bw Mitga', 'Gilroy', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #231f20;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nvo-room a.button:hover {
+    background-color: #3fcab1;
+}
+
+.nvo-room-image {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.nvo-room-image div {
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+}
+
+.nvo-room-title h3 {
+    font-size: 1.2em;
+    margin: 0;
+}
