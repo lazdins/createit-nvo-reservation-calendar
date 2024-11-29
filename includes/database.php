@@ -1,5 +1,6 @@
 <?php
-// Version 1.0 - Database setup createit-nvo-reservation-calendar/includes/database.php
+// Version 1.1 - Database setup with temporary reservations table
+// File: createit-nvo-reservation-calendar/includes/database.php
 defined('ABSPATH') || exit;
 
 function createit_nvo_create_tables() {
@@ -65,12 +66,26 @@ function createit_nvo_create_tables() {
     // Global settings table
     $global_settings_table = "{$wpdb->prefix}nvo_global_settings";
     $sql_global_settings = "CREATE TABLE IF NOT EXISTS $global_settings_table (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    non_bookable_dates JSON,
+    weekly_availability JSON,
+    unavailable_weekdays JSON, -- New field for unavailable weekdays
+    reservation_rules TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	) $charset_collate;";
+
+    // Temporary reservations table
+    $temp_reservations_table = "{$wpdb->prefix}nvo_temp_reservations";
+    $sql_temp_reservations = "CREATE TABLE IF NOT EXISTS $temp_reservations_table (
         id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        non_bookable_dates JSON,
-        weekly_availability JSON,
-        reservation_rules TEXT,
+        room_id BIGINT UNSIGNED NOT NULL,
+        user_id BIGINT UNSIGNED NOT NULL,
+        start_time DATETIME NOT NULL,
+        end_time DATETIME NOT NULL,
+        expires_at DATETIME NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        FOREIGN KEY (room_id) REFERENCES {$wpdb->prefix}posts(ID) ON DELETE CASCADE
     ) $charset_collate;";
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -78,4 +93,6 @@ function createit_nvo_create_tables() {
     dbDelta($sql_rooms);
     dbDelta($sql_equipment);
     dbDelta($sql_global_settings);
+    dbDelta($sql_temp_reservations);
 }
+?>
